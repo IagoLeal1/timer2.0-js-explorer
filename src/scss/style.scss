@@ -1,29 +1,84 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-:root{
+:root {
   font-size: 62.5%;
 
   --timer: #323238;
-  --bg-card: #E1E1E6;
-  --bg-card-active: #02799D;
+  --bg-card: #e1e1e6;
+  --bg-card-active: #02799d;
+  --bg-card-active-dark: #0A3442;
   --icon-active: #ffffff;
+
+  --bg-dark: #121214;
+  --bg-dark-fill: #c4c4cc;
+  --bg-dark-card: #29292e;
+
+  --slider-light: #323238;
 }
 
-.hide{ 
-  display: none; 
+.hide {
+  display: none;
+}
+.dark {
+  background-color: var(--bg-dark);
+  font-family: 'Roboto', sans-serif;
+
+  height: 100vh;
+  display: grid;
+  place-content: center;
+
+  span {
+    color: #fff;
+  }
+
+  svg path {
+    fill: var(--bg-dark-fill);
+  }
+
+  #sounds {
+    .cards {
+      background-color: var(--bg-dark-card);
+      
+       input[type='range']::-webkit-slider-runnable-track {
+        background: white;
+      }
+       input[type='range']::-webkit-slider-thumb {
+        background-color: white;
+      }
+    }
+    .active{
+      background-color: var(--bg-card-active-dark);
+    }
+  }
 }
 
-body {
+.light {
   background-color: #fff;
   font-family: 'Roboto', sans-serif;
 
   height: 100vh;
   display: grid;
   place-content: center;
+}
+.active-dark {
+  border: none;
+  background-color: transparent;
+
+  position: absolute;
+  top: 6.4rem;
+  right: 6.4rem;
+}
+.active-light {
+  border: none;
+  background-color: transparent;
+
+  position: absolute;
+  top: 6.4rem;
+  right: 6.4rem;
 }
 
 main {
@@ -35,34 +90,32 @@ main {
   gap: 19.2rem;
 }
 
-button{
-  cursor: pointer
+button {
+  cursor: pointer;
 }
 
-span{
+span {
   font-size: 12.6rem;
-  line-height: 14.8rem;   
+  line-height: 14.8rem;
 
   color: var(--timer);
 }
 
-#timer button{
+#timer button {
   border: none;
   background: transparent;
   margin-top: 4rem;
-  
-  &:nth-child(3){
-    margin-left: 4rem;
-  }
-  &:nth-child(4){
-    margin-left: 4rem;
-  }
-  &:nth-child(5){
-    margin-left: 4rem;
-  }
-  
-}
 
+  &:nth-child(3) {
+    margin-left: 4rem;
+  }
+  &:nth-child(4) {
+    margin-left: 4rem;
+  }
+  &:nth-child(5) {
+    margin-left: 4rem;
+  }
+}
 
 #sounds {
   display: grid;
@@ -72,7 +125,7 @@ span{
   max-width: 30.8rem;
   max-height: 33.6rem;
 
-  .cards{
+  .cards {
     width: 13.8rem;
     height: 15.2rem;
     display: flex;
@@ -81,43 +134,74 @@ span{
     border-radius: 2.4rem;
     background-color: var(--bg-card);
 
-    button{
+    button {
       border: none;
       background: transparent;
     }
-    
+
+    input[type='range'] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+      width: 9rem;
+    }
+
+    input[type='range']::-webkit-slider-runnable-track {
+      background: var(--slider-light);
+      height: 0.5rem;
+      margin-top: 3.2rem;
+      border-radius: 0.5rem;
+    }
+
+    input[type='range']::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      margin-top: -0.6rem;
+      background-color: var(--slider-light);
+      height: 1.6rem;
+      width: 1.6rem;
+      border-radius: 50%;
+    }
+    input[type='range']:focus {
+      outline: none;
+    }
   }
-  .active{
+  .active {
     background-color: var(--bg-card-active);
 
-    svg path{
+    svg path {
       fill: var(--icon-active);
+    }
+    input[type='range']::-webkit-slider-runnable-track {
+      background: white;
+    }
+    input[type='range']::-webkit-slider-thumb {
+      background-color: white;
     }
   }
 }
 
-footer{
+footer {
   position: absolute;
   bottom: 6rem;
   right: 5rem;
 
-  button{
+  button {
     border: none;
     background-color: transparent;
   }
 
-  .active{
-    svg path{
+  .active {
+    svg path {
       fill: var(--bg-card-active);
     }
   }
 }
 
-@media(min-width: 850px){
-  main{
+@media (min-width: 850px) {
+  main {
     display: flex;
     flex-direction: row;
   }
 }
-
-

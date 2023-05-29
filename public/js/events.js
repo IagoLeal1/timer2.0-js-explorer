@@ -1,14 +1,17 @@
 import {
   buttonBackwards,
+  buttonDarkMode,
   buttonFire,
   buttonFlorest,
   buttonForwards,
-  buttonPlay,
+  buttonLightMode,
   buttonPause,
+  buttonPlay,
   buttonRain,
   buttonStop,
+  buttonStopSound,
   buttonStore,
-  buttonStopSound
+  bodyMode,
 } from './elements.js';
 
 export default function ({ timer, sound }) {
@@ -18,11 +21,11 @@ export default function ({ timer, sound }) {
     buttonPlay.classList.add('hide');
   });
 
-  buttonPause.addEventListener('click', function(){
-    timer.hold()
+  buttonPause.addEventListener('click', function () {
+    timer.hold();
     buttonPause.classList.add('hide');
     buttonPlay.classList.remove('hide');
-  })
+  });
 
   buttonStop.addEventListener('click', function () {
     timer.resetTimer();
@@ -48,6 +51,7 @@ export default function ({ timer, sound }) {
     buttonRain.classList.remove('active');
     buttonStore.classList.remove('active');
     buttonFire.classList.remove('active');
+
   });
   buttonRain.addEventListener('click', function () {
     sound.buttonRainPlay();
@@ -89,7 +93,7 @@ export default function ({ timer, sound }) {
     buttonFlorest.classList.remove('active');
   });
 
-  buttonStopSound.addEventListener('click', function(){
+  buttonStopSound.addEventListener('click', function () {
     sound.buttonFirePause();
     sound.buttonFlorestPause();
     sound.buttonRainPause();
@@ -101,5 +105,18 @@ export default function ({ timer, sound }) {
     buttonFlorest.classList.remove('active');
 
     buttonStopSound.classList.add('active');
-  })
+  });
+
+  buttonLightMode.addEventListener('click', function () {
+    bodyMode.classList.add('light');
+    bodyMode.classList.remove('dark');
+    buttonDarkMode.classList.remove('hide');
+    buttonLightMode.classList.add('hide');
+  });
+  buttonDarkMode.addEventListener('click', function () {
+    bodyMode.classList.remove('light');
+    bodyMode.classList.add('dark');
+    buttonLightMode.classList.remove('hide');
+    buttonDarkMode.classList.add('hide');
+  });
 }
